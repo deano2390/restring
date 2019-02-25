@@ -24,12 +24,20 @@ class StringsLoaderTask extends AsyncTask<Void, Void, Map<String, Map<String, St
         this.stringRepository = stringRepository;
     }
 
+    public void executeSynchronously(){
+        onPostExecute(loadStrings());
+    }
+
     public void run() {
         executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     @Override
     protected Map<String, Map<String, String>> doInBackground(Void... voids) {
+        return loadStrings();
+    }
+
+    private Map<String, Map<String, String>> loadStrings() {
         Map<String, Map<String, String>> langStrings = new LinkedHashMap<>();
 
         List<String> languages = stringsLoader.getLanguages();
@@ -42,6 +50,7 @@ class StringsLoaderTask extends AsyncTask<Void, Void, Map<String, Map<String, St
 
         return langStrings;
     }
+
 
     @Override
     protected void onPostExecute(Map<String, Map<String, String>> langStrings) {

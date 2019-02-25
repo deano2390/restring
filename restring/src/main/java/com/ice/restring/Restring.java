@@ -84,7 +84,14 @@ public abstract class Restring {
         }
 
         if (config.getStringsLoader() != null) {
-            new StringsLoaderTask(config.getStringsLoader(), stringRepository).run();
+
+            StringsLoaderTask loaderTask = new StringsLoaderTask(config.getStringsLoader(), stringRepository);
+
+            if (config.shouldInitSynchronously()) {
+                loaderTask.executeSynchronously();
+            } else {
+                loaderTask.run();
+            }
         }
     }
 
