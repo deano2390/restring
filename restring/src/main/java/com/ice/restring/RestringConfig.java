@@ -6,7 +6,7 @@ package com.ice.restring;
 public class RestringConfig {
 
     private boolean persist;
-    private boolean initSyncronously;
+    private boolean initSynchronously;
     private Restring.StringsLoader stringsLoader;
 
     public boolean isPersist() {
@@ -14,7 +14,7 @@ public class RestringConfig {
     }
 
     public boolean shouldInitSynchronously() {
-        return initSyncronously;
+        return initSynchronously;
     }
 
     public Restring.StringsLoader getStringsLoader() {
@@ -26,7 +26,7 @@ public class RestringConfig {
 
     public static class Builder {
         private boolean persist;
-        private boolean initSyncronously;
+        private boolean initSynchronously;
         private Restring.StringsLoader stringsLoader;
 
         public Builder persist(boolean persist) {
@@ -34,8 +34,8 @@ public class RestringConfig {
             return this;
         }
 
-        public Builder initSyncronously(boolean initSyncronously) {
-            this.initSyncronously = initSyncronously;
+        public Builder initSynchronously(boolean initSynchronously) {
+            this.initSynchronously = initSynchronously;
             return this;
         }
 
@@ -47,7 +47,7 @@ public class RestringConfig {
         public RestringConfig build() {
             RestringConfig config = new RestringConfig();
             config.persist = persist;
-            config.initSyncronously = initSyncronously;
+            config.initSynchronously = initSynchronously;
             config.stringsLoader = stringsLoader;
             return config;
         }
@@ -56,7 +56,7 @@ public class RestringConfig {
     static RestringConfig getDefault() {
         return new Builder()
                 .persist(true)
-                .initSyncronously(false)
+                .initSynchronously(false)
                 .build();
     }
 }
