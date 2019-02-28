@@ -77,11 +77,11 @@ public abstract class Restring {
     }
 
 
-    public String getString(String key) {
+    public static String getString(String key) {
         return getString(RestringUtil.getCurrentLanguage(), key);
     }
 
-    public String getString(String language, String key) {
+    public static String getString(String language, String key) {
         if (stringRepository != null) {
             return stringRepository.getString(language, key);
         }
