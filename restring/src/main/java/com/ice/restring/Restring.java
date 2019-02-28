@@ -72,8 +72,20 @@ public abstract class Restring {
         stringRepository.setString(language, key, value);
     }
 
-    static StringRepository getStringRepository() {
+    public static StringRepository getStringRepository() {
         return stringRepository;
+    }
+
+
+    public String getString(String key) {
+        return getString(RestringUtil.getCurrentLanguage(), key);
+    }
+
+    public String getString(String language, String key) {
+        if (stringRepository != null) {
+            return stringRepository.getString(language, key);
+        }
+        return null;
     }
 
     private static void initStringRepository(Context context, RestringConfig config) {
